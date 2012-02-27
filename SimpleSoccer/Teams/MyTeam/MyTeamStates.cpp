@@ -27,8 +27,10 @@ void MyAttacking::Enter(AbstSoccerTeam* team)
 //#endif
 
   //these define the home regions for this state of each of the players
-  const int BlueRegions[TeamSize] = {1,9,11,7,4};
-  const int RedRegions[TeamSize] = {16,8,6,10,13};
+  //This configuration is designed to favor a tight passing pattern with
+  //and option to do a long pass to the forward player -MW
+  const int BlueRegions[TeamSize] = {1,9,8,3,4};
+  const int RedRegions[TeamSize] = {16,8,9,14,13};
 
   //set up the player's home regions
   if (team->Color() == AbstSoccerTeam::blue)
@@ -54,7 +56,7 @@ void MyAttacking::Execute(AbstSoccerTeam* team)
   {
     team->GetFSM()->ChangeState(MyDefending::Instance()); return;
   }
-
+  
   //calculate the best position for any supporting attacker to move to
   team->DetermineBestSupportingPosition();
 }
