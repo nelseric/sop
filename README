@@ -2,8 +2,16 @@ Sons of Pitches
 Members: Eric Nelson, Thomas Peterson, Michael Wierenga
 Release Schedule:
   Team Assign: Feb 18 *Done
-  Design Description: Feb 23 *Current
-  Beta Release: Feb 30
+  Design Description: Feb 23 *Done
+  Beta Release: Feb 30 *Current
   Final Release: March 15
+
+Personal Notes:(if you have ideas or opinions on these please share)
+
+*I want to alter the "canshoot" function right at the outset and seen how it changes the shooting behavior, namely
+  if my alterations make the shooter too careful and causes too much hesitation.  I am wanting to underestimate the
+  power needed to make a shot, and possibly lower the number of checks before giving up on the shot.  The desired
+  change would be to check the positions quickly for a "sure thing", and if one is not immediately seen, pass it and
+  try with that player.
 
 
