@@ -34,6 +34,9 @@
     <Filter Include="Teams\MyTeam">
       <UniqueIdentifier>{58caee62-d79b-48a2-b269-d1d0091a04bf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Teams\SonsOfPitches">
+      <UniqueIdentifier>{bb55b160-19f0-4bd6-ac51-de51deb8739a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="AbstSoccerTeam.cpp">
@@ -125,6 +128,21 @@
     </ClCompile>
     <ClCompile Include="Teams\MyTeam\MyTeamStates.cpp">
       <Filter>Teams\MyTeam</Filter>
+    </ClCompile>
+    <ClCompile Include="Teams\SonsOfPitches\SonsOfPitches.cpp">
+      <Filter>Teams\SonsOfPitches</Filter>
+    </ClCompile>
+    <ClCompile Include="Teams\SonsOfPitches\SonsOfPitchesMaker.cpp">
+      <Filter>Teams\SonsOfPitches</Filter>
+    </ClCompile>
+    <ClCompile Include="Teams\SonsOfPitches\SoPFieldPlayerStates.cpp">
+      <Filter>Teams\SonsOfPitches</Filter>
+    </ClCompile>
+    <ClCompile Include="Teams\SonsOfPitches\SoPGoalKeeperStates.cpp">
+      <Filter>Teams\SonsOfPitches</Filter>
+    </ClCompile>
+    <ClCompile Include="Teams\SonsOfPitches\SoPTeamStates.cpp">
+      <Filter>Teams\SonsOfPitches</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -271,6 +289,21 @@
     </ClInclude>
     <ClInclude Include="Teams\MyTeam\MyTeamStates.h">
       <Filter>Teams\MyTeam</Filter>
+    </ClInclude>
+    <ClInclude Include="Teams\SonsOfPitches\SonsOfPitchesMaker.h">
+      <Filter>Teams\SonsOfPitches</Filter>
+    </ClInclude>
+    <ClInclude Include="Teams\SonsOfPitches\SonsOfPitches.h">
+      <Filter>Teams\SonsOfPitches</Filter>
+    </ClInclude>
+    <ClInclude Include="Teams\SonsOfPitches\SoPFieldPlayerStates.h">
+      <Filter>Teams\SonsOfPitches</Filter>
+    </ClInclude>
+    <ClInclude Include="Teams\SonsOfPitches\SoPGoalKeeperStates.h">
+      <Filter>Teams\SonsOfPitches</Filter>
+    </ClInclude>
+    <ClInclude Include="Teams\SonsOfPitches\SoPTeamStates.h">
+      <Filter>Teams\SonsOfPitches</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

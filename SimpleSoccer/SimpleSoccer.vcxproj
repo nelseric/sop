@@ -332,6 +332,11 @@
     <ClCompile Include="Teams\MyTeam\MySoccerTeam.cpp" />
     <ClCompile Include="Teams\MyTeam\MySoccerTeamMaker.cpp" />
     <ClCompile Include="Teams\MyTeam\MyTeamStates.cpp" />
+    <ClCompile Include="Teams\SonsOfPitches\SonsOfPitches.cpp" />
+    <ClCompile Include="Teams\SonsOfPitches\SonsOfPitchesMaker.cpp" />
+    <ClCompile Include="Teams\SonsOfPitches\SoPFieldPlayerStates.cpp" />
+    <ClCompile Include="Teams\SonsOfPitches\SoPGoalKeeperStates.cpp" />
+    <ClCompile Include="Teams\SonsOfPitches\SoPTeamStates.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstSoccerTeam.h" />
@@ -382,6 +387,11 @@
     <ClInclude Include="Teams\MyTeam\MySoccerTeam.h" />
     <ClInclude Include="Teams\MyTeam\MySoccerTeamMaker.h" />
     <ClInclude Include="Teams\MyTeam\MyTeamStates.h" />
+    <ClInclude Include="Teams\SonsOfPitches\SonsOfPitches.h" />
+    <ClInclude Include="Teams\SonsOfPitches\SonsOfPitchesMaker.h" />
+    <ClInclude Include="Teams\SonsOfPitches\SoPFieldPlayerStates.h" />
+    <ClInclude Include="Teams\SonsOfPitches\SoPGoalKeeperStates.h" />
+    <ClInclude Include="Teams\SonsOfPitches\SoPTeamStates.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="icon1.ico" />
