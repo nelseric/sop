@@ -14,4 +14,7 @@ Personal Notes:(if you have ideas or opinions on these please share)
   change would be to check the positions quickly for a "sure thing", and if one is not immediately seen, pass it and
   try with that player.
 
+  Update to canshoot:  Lowering the modifier in the MySoccerTeam.cpp paired with more agressive positioning yielded
+     a noticable increase in the number of shots on goal and in turn more shots scored even if a few were blocked.
 
+  Keeping at the level it is now, may try something more dramatic once all the areas are combined.
