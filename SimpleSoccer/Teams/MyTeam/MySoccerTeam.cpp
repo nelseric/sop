@@ -268,7 +268,10 @@ bool MySoccerTeam::CanShoot(Vector2D  BallPos,
 {
   //the number of randomly created shot targets this method will test
   //GT 2/10/10 the number has been multiplied by three relative to the Buckland team
-  int NumAttempts = Prm.NumAttemptsToFindValidStrike*3; 
+  //MW 3/1/12 a slight tweak to the NumAttempts makes the shooter sacrifice certanty
+  //  for less hesitation and will shoot riskier shots, with a greater chance of
+  //  overall success.
+  int NumAttempts = Prm.NumAttemptsToFindValidStrike*2; 
 
   while (NumAttempts--)
   {
