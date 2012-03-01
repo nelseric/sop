@@ -268,7 +268,7 @@ bool SonsOfPitches::CanShoot(Vector2D  BallPos,
 {
   //the number of randomly created shot targets this method will test
   //GT 2/10/10 the number has been multiplied by three relative to the Buckland team
-  int NumAttempts = Prm.NumAttemptsToFindValidStrike*3; 
+  int NumAttempts = Prm.NumAttemptsToFindValidStrike*2; 
 
   while (NumAttempts--)
   {
