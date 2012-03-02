@@ -6,6 +6,7 @@
 #include "../../constants.h"
 #include "../../SoccerPitch.h"
 
+
 //uncomment to send state info to debug window
 //#define DEBUG_TEAM_STATES
 #include "Debug/DebugConsole.h"
@@ -29,17 +30,17 @@ void SoPAttacking::Enter(AbstSoccerTeam* team)
   //these define the home regions for this state of each of the players
   //This configuration is designed to favor a tight passing pattern with
   //and option to do a long pass to the forward player -MW
-  const int BlueRegions[TeamSize] = {1,9,8,3,4};
-  const int RedRegions[TeamSize] = {16,8,9,14,13};
+  const int BlueSetupRegions[TeamSize] = {1,12,11,10,4};
+  const int RedSetupRegions[TeamSize] = {16,3,8,7,13};
 
   //set up the player's home regions
   if (team->Color() == AbstSoccerTeam::blue)
   {
-    team->ChangePlayerHomeRegions(BlueRegions);
+    team->ChangePlayerHomeRegions(BlueSetupRegions);
   }
   else
   {
-    team->ChangePlayerHomeRegions(RedRegions);
+    team->ChangePlayerHomeRegions(RedSetupRegions);
   }
 
   //if a player is in either the Wait or ReturnToHomeRegion states, its
