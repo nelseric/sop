@@ -14,7 +14,8 @@
 
 #include "time/Regulator.h"
 
-
+int numberOfInterposers = 0;
+const int MAXINTERPOSERS = 1;
 //uncomment below to send state info to the debug window
 //#define PLAYER_STATE_INFO_ON
 
@@ -348,6 +349,13 @@ void SoPReturnToHomeRegion::Execute(FieldPlayer* player)
   {
     player->GetFSM()->ChangeState(SoPWait::Instance());
   }
+
+  if (player->Team()->Opponents()->SupportingPlayer() != 0 &&
+	  numberOfInterposers < MAXINTERPOSERS)
+  {
+	  player->GetFSM()->ChangeState(FindGoodInterposer::Instance());
+	  return;
+  }
 }
 
 void SoPReturnToHomeRegion::Exit(FieldPlayer* player)
@@ -428,6 +436,12 @@ void SoPWait::Execute(FieldPlayer* player)
      return;
    }
   } 
+  if (player->Team()->Opponents()->SupportingPlayer() != 0 &&
+	  numberOfInterposers < MAXINTERPOSERS)
+  {
+	  player->GetFSM()->ChangeState(FindGoodInterposer::Instance());
+	  return;
+  }
 }
 
 void SoPWait::Exit(FieldPlayer* player){}
@@ -727,7 +741,85 @@ void SoPReceiveBall::Exit(FieldPlayer* player)
   player->Team()->SetReceiver(NULL);
 }
 
+InterposeSupportOpponent* InterposeSupportOpponent::Instance()
+{
+	static InterposeSupportOpponent instance;
+	return &instance;
+}
 
+void
+InterposeSupportOpponent::Enter(FieldPlayer* player)
+{
+	player->Steering()->InterposeOn(20.0);
+	numberOfInterposers++;
+
+#ifdef PLAYER_STATE_INFO_ON
+	debug_con << "Player " << player->ID() << " enters InterposeSupportOpponent state" << "";
+#endif
+}
+
+void
+InterposeSupportOpponent::Execute(FieldPlayer* player)
+{
+	if (!player->Team()->Opponents()->InControl() || numberOfInterposers > MAXINTERPOSERS)
+		player->GetFSM()->ChangeState(SoPWait::Instance());
+	else if (player->Team()->Opponents()->SupportingPlayer() != 0)
+	{
+	 if (player->isClosestTeamMemberToBall() &&
+		player->Team()->Receiver() == NULL  &&
+		!player->Pitch()->GoalKeeperHasBall())
+		{
+			player->GetFSM()->ChangeState(SoPChaseBall::Instance());
+			return;
+		}  
+		player->Steering()->SetTarget(player->Team()->Opponents()->SupportingPlayer()->Pos());
+	}
+	else
+		player->GetFSM()->ChangeState(SoPWait::Instance());
+}
+
+void
+InterposeSupportOpponent::Exit(FieldPlayer* player)
+{
+	player->Steering()->InterposeOff();
+	numberOfInterposers--;
+}
+
+
+
+
+
+FindGoodInterposer* FindGoodInterposer::Instance()
+{
+	static FindGoodInterposer instance;
+	return &instance;
+}
+
+void
+FindGoodInterposer::Enter(FieldPlayer* player)
+{
+#ifdef PLAYER_STATE_INFO_ON
+	debug_con << "Player " << player->ID() << " enters FindGoodInterposer state" << "";
+#endif
+}
+
+void
+FindGoodInterposer::Execute(FieldPlayer* player)
+{	if (player->Team()->Opponents()->SupportingPlayer() != 0)
+	{
+		double distance (Vec2DDistance(player->Team()->Opponents()->SupportingPlayer()->Pos(), player->Pos()));
+		if (distance < 70)
+			player->GetFSM()->ChangeState(InterposeSupportOpponent::Instance());
+		else
+			player->GetFSM()->ChangeState(SoPWait::Instance());
+	}
+}
+
+void
+FindGoodInterposer::Exit(FieldPlayer* player)
+{
+
+}
 
 
  

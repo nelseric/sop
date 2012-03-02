@@ -192,7 +192,35 @@ public:
   bool OnMessage(FieldPlayer*, const Telegram&){return false;}
 };
 
+class
+InterposeSupportOpponent: public State<FieldPlayer>
+{
 
+private:
+	InterposeSupportOpponent(){}
+
+public:
+	//this is a singleton
+	static InterposeSupportOpponent* Instance();
+	void Enter(FieldPlayer* player);
+	void Execute(FieldPlayer* player);
+	void Exit(FieldPlayer* player);
+	bool OnMessage(FieldPlayer*, const Telegram&){return false;}
+};
+
+class
+FindGoodInterposer: public State<FieldPlayer>
+{
+private:
+	FindGoodInterposer(){}
+public:
+	//this is a singleton
+	static FindGoodInterposer* Instance();
+	void Enter(FieldPlayer* player);
+	void Execute(FieldPlayer* player);
+	void Exit(FieldPlayer* player);
+	bool OnMessage(FieldPlayer*, const Telegram&){return false;}
+};
 
 
   
