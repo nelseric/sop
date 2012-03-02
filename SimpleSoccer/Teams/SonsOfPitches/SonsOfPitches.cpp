@@ -268,20 +268,25 @@ bool SonsOfPitches::CanShoot(Vector2D  BallPos,
 {
   //the number of randomly created shot targets this method will test
   //GT 2/10/10 the number has been multiplied by three relative to the Buckland team
-  int NumAttempts = Prm.NumAttemptsToFindValidStrike*2; 
+  int NumAttempts = Prm.NumAttemptsToFindValidStrike * 2; 
+
+      //the y value of the shot position should lay somewhere between two
+    //goalposts (taking into consideration the ball diameter)
+
+  int MinYVal = OpponentsGoal()->LeftPost().y + Pitch()->Ball()->BRadius(); // only need to calculate once
+  int MaxYVal = OpponentsGoal()->RightPost().y - Pitch()->Ball()->BRadius();
+  int range = MaxYVal - MinYVal;
+  double step = range / NumAttempts;
 
   while (NumAttempts--)
   {
-    //choose a random position along the opponent's goal mouth. (making
-    //sure the ball's radius is taken into account)
+
     ShotTarget = OpponentsGoal()->Center();
 
-    //the y value of the shot position should lay somewhere between two
-    //goalposts (taking into consideration the ball diameter)
-    int MinYVal = OpponentsGoal()->LeftPost().y + Pitch()->Ball()->BRadius();
-    int MaxYVal = OpponentsGoal()->RightPost().y - Pitch()->Ball()->BRadius();
 
-    ShotTarget.y = (double)RandInt(MinYVal, MaxYVal);
+	// Check positions evenly along the goal line, not randomly, because that is inefficient
+
+	ShotTarget.y = NumAttempts * step + MinYVal;
 
     //make sure striking the ball with the given power is enough to drive
     //the ball over the goal line.
