@@ -46,7 +46,7 @@ public:
 
   ~SonsOfPitches();
 
-  std::string Name()const{return "MyTeam";}
+  std::string Name()const{return "Sons of Pitches";}
 
 	void InitStateMachine();
 	void CreatePlayers();
